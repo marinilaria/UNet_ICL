@@ -19,12 +19,12 @@ BCG_transformed = fits.Transformation_Map("D2_BCG+ICL.0.0.066.0.x.BCG.HST_ACS-WF
 
 
 #Resize image
-random_crop = random_size(ICL_transformed.get_size(), pixels=512)
+random_crop = fits.random_size(ICL_transformed.get_size(), pixels=512)
 ICL_resized = ICL_transformed.resize_image(crop = random_crop)
 BCG_resized = BCG_transformed.resize_image(crop = random_crop)
 
 #Draw random ellipse
-mask = get_mask_ellipse(ICL_resized, N=1, n=5)
+mask = fits.get_mask_ellipse(ICL_resized, N=1, n=5)
 ICL_perturbed = ICL_resized.draw_ellipse(mask)
 BCG_perturbed = BCG_resized.draw_ellipse(mask)
 
